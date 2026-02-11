@@ -1,0 +1,39 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Click the Box Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🎯 Click the Box Game</h1>
+  <p>Score: <span id="score">0</span></p>
+
+  <div id="gameArea">
+    <div id="box"></div>
+  </div>
+
+  <script>
+    let score = 0;
+    const box = document.getElementById("box");
+    const scoreText = document.getElementById("score");
+    const gameArea = document.getElementById("gameArea");
+
+    box.addEventListener("click", () => {
+      score++;
+      scoreText.textContent = score;
+
+      const maxX = gameArea.clientWidth - box.clientWidth;
+      const maxY = gameArea.clientHeight - box.clientHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      box.style.left = randomX + "px";
+      box.style.top = randomY + "px";
+    });
+  </script>
+
+</body>
+</html>
